@@ -23,7 +23,20 @@
 
     5. django-admin
         djang-admin startporject config
+        python manage.py createsuperuser
 
     6. flake8(개발할때만사용 --dev)
         pipenv install flake8 --dev
         python3 -m pipenv install flake8 --dev
+
+    7. django-admin 생성
+        django-admin startapp converstations
+        django-admin startapp lists
+        django-admin startapp reservations
+        django-admin startapp reviews
+        django-admin startapp rooms
+        django-admin startapp users
+
+    8. models 수정시
+        python manage.py makemigrations
+        python manage.py migrate

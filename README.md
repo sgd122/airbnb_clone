@@ -40,3 +40,6 @@
     8. models 수정시
         python manage.py makemigrations
         python manage.py migrate
+
+    9. 나라리스트
+        pipenv install django-countries

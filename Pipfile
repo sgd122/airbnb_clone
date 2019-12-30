@@ -5,6 +5,9 @@ verify_ssl = true
 
 [dev-packages]
 flake8 = "*"
+black = "*"
+autopep8 = "*"
+yapf = "*"
 
 [packages]
 django = "==2.2.5"
@@ -12,4 +15,7 @@ pillow = "*"
 django-countries = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true

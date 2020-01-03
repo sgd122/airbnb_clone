@@ -50,11 +50,13 @@
 
 ## 데이터 생성
 
-    1. django-seed 이용
+### 1. django-seed 이용
+
         management / commands 폴더생성
         __init__.py 폴더 필수
 
-    2. 파일을 생성 후 커맨드입력
+### 2. 파일을 생성 후 커맨드입력
+
         python manage.py seed_amenities
         python manage.py seed_facilities
         python manage.py seed_users --number 50
@@ -63,7 +65,8 @@
         python manage.py seed_lists --number 50
         python manage.py seed_reservations --number 200
 
-    3. seed 에러
+### 3. seed 에러
+
         File "/Users/seong-gidong/.local/share/virtualenvs/airbnb_clone-mj4RvmWF/lib/python3.7/site-packages/django_seed/__init__.py", line 35, in faker
         cls.fakers[code].seed(random.randint(1, 10000))
         => cls.fakers[code].seed_instance(random.randint(1, 10000))

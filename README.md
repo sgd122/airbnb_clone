@@ -1,19 +1,23 @@
 # airbnb_clone
+
 에어비앤비 클론 코딩
 
 ## wsl path
+
     cd /mnt/c/Users/Seong\ Gi\ Dong/Documents/GitHub/airbnb_clone/
 
 ## error
+
     sudo python3 -m pip uninstall pip && sudo apt-get install python3-pip --reinstall
 
 ## setting
-    1. pip3 install --user pipenv   or brew install pipenv    
-    
+
+    1. pip3 install --user pipenv   or brew install pipenv
+
     2. pipenv
         window : pipenv install
         mac : pipenv --three
-    
+
     3. 가상환경시작
         pipenv shell
         python3 -m pipenv shell
@@ -45,6 +49,7 @@
         pipenv install django-countries
 
 ## 데이터 생성
+
     1. django-seed 이용
         management / commands 폴더생성
         __init__.py 폴더 필수

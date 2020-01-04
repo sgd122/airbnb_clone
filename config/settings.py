@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+# import pymysql
+
+# pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +28,7 @@ SECRET_KEY = "11c71)+xb@t2@y=%tx7vmvtm$v1meqenvp_y!8o(m$wgu8chdd"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,7 +42,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["django-countries", "django_seed"]
+THIRD_PARTY_APPS = ["django-countries", "django_seed", "mysqlclient", "pymysql"]
 
 PROJECT_APPS = [
     "core.apps.CoreConfig",
@@ -90,14 +93,13 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        # "ENGINE": "django.db.backends.mysql",
-        # "NAME": "airbnb",
-        # "USER": "root",
-        # "PASSWORD": "doul0465",
-        # "HOST": "doul.c6twjfaqgp0c.ap-northeast-2.rds.amazonaws.com",
-        # "PORT": "3306",
+        # "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.mysql",
+        "OPTIONS": {
+            "read_default_file": os.path.join(BASE_DIR, "mysql.cnf"),
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",  # strict mode 설정 추가
+        },
     }
 }
 

@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -45,3 +46,6 @@ class User(AbstractUser):
         choices=CURRENCY_CHOICES, max_length=3, blank=True, help_text="통화"
     )
     superhost = models.BooleanField(default=False)
+
+    def get_absolute_url(self):
+        return reverse("users:detail", kwargs={"pk": self.pk})

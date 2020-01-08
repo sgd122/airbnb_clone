@@ -2,6 +2,11 @@
 
 에어비앤비 클론 코딩
 
+# branch
+
+    master
+    develop
+
 ## wsl path
 
     cd /mnt/c/Users/Seong\ Gi\ Dong/Documents/GitHub/airbnb_clone/

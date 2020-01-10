@@ -38,6 +38,16 @@ class User(AbstractUser):
         (CURRENCY_KRW, "KRW"),
     )
 
+    LOGIN_EMAIL = "email"
+    LOGIN_GITHUB = "github"
+    LOGIN_KAKAO = "kakao"
+
+    LOGIN_CHOICES = (
+        (LOGIN_EMAIL, "Email"),
+        (LOGIN_GITHUB, "Github"),
+        (LOGIN_KAKAO, "Kakao"),
+    )
+
     avatar = models.ImageField(upload_to="avatars", blank=True, help_text="프로필사진")
     gender = models.CharField(
         choices=GENDER_CHOICES, max_length=10, blank=True, help_text="성별"
@@ -61,6 +71,9 @@ class User(AbstractUser):
     superhost = models.BooleanField(default=False)
     email_verified = models.BooleanField(default=False)
     email_secret = models.CharField(max_length=20, default="", blank=True)
+    login_method = models.CharField(
+        max_length=50, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
+    )
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"pk": self.pk})

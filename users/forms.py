@@ -1,4 +1,10 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import (
+    authenticate,
+    get_user_model,
+    password_validation,
+)
 from . import models
 
 
@@ -21,20 +27,40 @@ class LoginForm(forms.Form):
 
 
 class SignUpForm(forms.ModelForm):
+    # class SignUpForm(UserCreationForm):
+    # username = forms.EmailField(label="Email")
+
     class Meta:
         model = models.User
         fields = ("first_name", "last_name", "email")
 
     password = forms.CharField(widget=forms.PasswordInput)
-    password1 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
+    password2 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
 
     def clean_password1(self):
         password = self.cleaned_data.get("password")
-        password1 = self.cleaned_data.get("password1")
-        if password != password1:
-            raise forms.ValidationError("비밀번호가 일치하지않습니다.")
-        else:
-            return password
+        password2 = self.cleaned_data.get("password1")
+        # if password != password2:
+        #     raise forms.ValidationError("비밀번호가 일치하지않습니다.")
+        # else:
+        #     return password
+
+        if password and password2 and password != password2:
+            raise forms.ValidationError(
+                self.error_messages["password_mismatch"], code="password_mismatch",
+            )
+        return password
+
+    def _post_clean(self):
+        super()._post_clean()
+        # Validate the password after self.instance is updated with form data
+        # by super().
+        password = self.cleaned_data.get("password2")
+        if password:
+            try:
+                password_validation.validate_password(password, self.instance)
+            except forms.ValidationError as error:
+                self.add_error("password2", error)
 
     def save(self, *args, **kwargs):
         email = self.cleaned_data.get("email")

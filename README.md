@@ -77,6 +77,10 @@
         cls.fakers[code].seed(random.randint(1, 10000))
         => cls.fakers[code].seed_instance(random.randint(1, 10000))
 
+### scss 수정후
+
+    npm run css
+
 ### 맥북 mysqlclient 에러시(ssl에러시)
 
     sudo env LDFLAGS="-I/usr/local/opt/openssl@1.1/include -L/usr/local/opt/openssl@1.1/lib" python3 -m pipenv install Mysqlclient

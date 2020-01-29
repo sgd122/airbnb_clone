@@ -85,7 +85,7 @@
 
     sudo env LDFLAGS="-I/usr/local/opt/openssl@1.1/include -L/usr/local/opt/openssl@1.1/lib" python3 -m pipenv install Mysqlclient
 
-### Docker
+### 4. Docker
 
     docker build -t airbnb .
     docker run -p 9000:8000 --rm -it --volume `pwd`:/code/ airbnb

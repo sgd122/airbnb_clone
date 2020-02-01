@@ -88,9 +88,17 @@
 ### 4. Docker
 
     docker build -t airbnb .
-    docker run -p 9000:8000 --rm -it --volume `pwd`:/code/ airbnb
+    docker run -p 8000:8000 --rm -it --volume `pwd`:/code/ airbnb
 
 #### Docker 빌드 및 Push
 
     호스트머신> docker build -t sgd122/airbnb:0.1 .
     호스트머신> docker push sgd122/airbnb:0.1
+
+#### Docker compose
+
+    docker-compose up --build
+    docker-compose start
+    docker-compose stop
+    docker-compose logs -f django
+    docker-compose down --volume

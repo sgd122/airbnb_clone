@@ -76,7 +76,7 @@ class User(AbstractUser):
     )
 
     def get_absolute_url(self):
-        return reverse("users:detail", kwargs={"pk": self.pk})
+        return reverse("users:profile", kwargs={"pk": self.pk})
 
     def verify_email(self):
         if self.email_verified is False:

@@ -1,0 +1,21 @@
+version: "3"
+
+services: # docker-compose 에서 컨테이너(service) 단위를 묶음
+  django: # 앱 service 이름
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    # environment: # docker 내에서 필요한 환경변수 설정
+    #   - DJANGO_DEBUG=True
+    #   - DJANGO_DB_HOST=db
+    #   - DJANGO_DB_PORT=5432
+    #   - DJANGO_DB_NAME=sampledb
+    #   - DJANGO_DB_USERNAME=sampleuser
+    #   - DJANGO_DB_PASSWORD=samplesecret
+    #   - DJANGO_SECRET_KEY=dev_secret_key
+    ports: # docker 와 로컬에서 서로 입력 출력할 포트, 접근할 포트
+      - "8000:8000"
+    command: ["python3", "/code/manage.py", "runserver", "0.0.0.0:8000"]
+
+    volumes: # 로컬 폴더(.)와 docker 의 /code 폴더를 마운트(연결)
+      - ./:/code/

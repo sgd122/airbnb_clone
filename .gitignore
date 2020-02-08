@@ -130,6 +130,6 @@ dmypy.json
 
 # Mac
 .DS_Store
-uploads/
+uploads/avatars/
 mysql.cnf
 node_modules/

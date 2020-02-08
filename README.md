@@ -88,8 +88,7 @@
 ### 4. Docker
 
     docker build -t airbnb .
-    docker run -p 8000:8000 --rm -it --volume ${pwd}:/code/ sgd122/airbnb:0.1
-    docker run -p 8000:8000 --rm -it --volume /c/Github/airbnb_clone/:/code/ sgd122/airbnb:0.1
+    docker run -p 8000:8000 --rm -it --volume `pwd`:/code/ airbnb
 
 #### Docker 빌드 및 Push
 

@@ -96,6 +96,7 @@
 
     호스트머신> docker build -t sgd122/airbnb:0.1 .
     호스트머신> docker push sgd122/airbnb:0.1
+    sudo docker run -d -p 80:8000 --rm -it --name airbnb sgd122/airbnb:0.1
 
 #### Docker compose
 

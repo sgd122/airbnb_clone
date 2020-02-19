@@ -2,6 +2,9 @@ FROM ubuntu:18.04
 # FROM alpine:3.9
 
 RUN apt-get update && apt-get install -y libssl-dev && apt-get install -y python3-pip python3-dev libmysqlclient-dev && apt-get clean
+RUN apt-get -y install locales
+RUN locale-gen en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 
 WORKDIR /code
 ADD requirements.txt /code/

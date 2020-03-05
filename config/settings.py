@@ -42,7 +42,8 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["django-countries", "django_seed", "mysqlclient", "pymysql"]
+THIRD_PARTY_APPS = ["django_seed", "pymysql"]
+# THIRD_PARTY_APPS = ["django-countries", "django_seed", "mysqlclient", "pymysql"]
 
 PROJECT_APPS = [
     "core.apps.CoreConfig",
@@ -54,7 +55,7 @@ PROJECT_APPS = [
     "conversations.apps.ConversationsConfig",
 ]
 
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 
 MIDDLEWARE = [
